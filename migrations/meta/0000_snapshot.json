@@ -1,0 +1,47 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "f825baa4-199d-43dc-b431-c136337d082c",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "temp_users": {
+      "name": "temp_users",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "temp_users_id": {
+          "name": "temp_users_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "tables": {},
+    "indexes": {}
+  }
+}
