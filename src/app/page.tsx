@@ -57,7 +57,7 @@ export default function Home() {
             <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your name" {...field} />
+                    <Input placeholder="Enter your name" {...field} value={field.value ?? ''}  />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
