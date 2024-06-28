@@ -1,73 +1,29 @@
-"use client"
 
-import { useTransition } from "react";
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
 import { type New, createSchema } from "./validations"
-import { createUser } from "./actions"
-import { useToast } from "@/components/ui/use-toast"
+import UsersList from "@/components/users-list";
+import CreateForm from "@/components/form";
 
-export default function Home() {
-  const { toast } = useToast()
-  const [isPending, startTransition] = useTransition();
 
-  const form = useForm<New>({
-    resolver: zodResolver(createSchema),
-    defaultValues: {
-      name: "",
-    },
-  })
 
-   function onSubmit(values: New) {
-    try{
+export default async function Home() {
 
-      (startTransition(async () => {
-        const result = await createUser(values);
-
-        toast({
-          title: "Success",
-          description: "User created successfully",
-        });
-        
-      }))
-    }catch(e){
-      console.log(e);
-    }
-  }
 
   return (
 
     <main className="bg-slate-500 flex items-center justify-center h-[100vh]">
 
-      <div className="container border rounded-md bg-white shadow-md p-5 w-[300px]">
+      <div className="container border rounded-md bg-white shadow-md p-5 w-[700px]">
 
         <h1 className="text-center">Form</h1>
 
-        <Form {...form}>
-          <form  onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
+        <div className="">
+         <CreateForm/>
+        </div>
 
-            <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your name" {...field} value={field.value ?? ''}  />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Button className="w-full" type="submit">Submit</Button>
-
-          </form>
-        </Form>
+        {/* TABLE */}
+        <div className="">
+          <UsersList/>
+        </div>
 
       </div>
 

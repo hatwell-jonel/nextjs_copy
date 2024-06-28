@@ -14,3 +14,7 @@ export async function createUser(data: New) {
       success: true,
     };
 }
+
+export async function getUsers() {
+  return await db.select().from(users);
+}
